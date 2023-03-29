@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "Catalogo">
+    <select id = "getAllCatalogos" resultType = "pojos.Catalogo">
+        SELECT
+        catalogo.idCatalogo,
+        catalogo.idTipo,
+        catalogo.nombre,
+        catalogo.orden
+        FROM catalogo
+    </select>
+</mapper>
+
