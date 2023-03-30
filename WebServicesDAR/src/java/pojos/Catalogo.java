@@ -9,26 +9,26 @@ package pojos;
  * @author Panther
  */
 public class Catalogo {
-    private int idcatalogo; 
+    private Integer idcatalogo; 
     private String nombre; 
-    private int idtipo; 
-    private int orden;
+    private Integer idtipo; 
+    private Integer orden;
 
     public Catalogo (){
     }
 
-    public Catalogo(int idcatalogo, String nombre, int idtipo, int orden) {
+    public Catalogo(Integer idcatalogo, String nombre, Integer idtipo, Integer orden) {
         this.idcatalogo = idcatalogo;
         this.nombre = nombre;
         this.idtipo = idtipo;
         this.orden = orden;
     }
-    
-    public int getIdcatalogo() {
+
+    public Integer getIdcatalogo() {
         return idcatalogo;
     }
 
-    public void setIdcatalogo(int idcatalogo) {
+    public void setIdcatalogo(Integer idcatalogo) {
         this.idcatalogo = idcatalogo;
     }
 
@@ -40,19 +40,20 @@ public class Catalogo {
         this.nombre = nombre;
     }
 
-    public int getIdtipo() {
+    public Integer getIdtipo() {
         return idtipo;
     }
 
-    public void setIdtipo(int idtipo) {
+    public void setIdtipo(Integer idtipo) {
         this.idtipo = idtipo;
     }
 
-    public int getOrden() {
+    public Integer getOrden() {
         return orden;
     }
 
-    public void setOrden(int orden) {
+    public void setOrden(Integer orden) {
         this.orden = orden;
     }
+
 }

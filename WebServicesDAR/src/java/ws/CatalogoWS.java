@@ -6,16 +6,21 @@ package ws;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojos.Catalogo;
+import pojos.Mensaje;
 
 /**
  * REST Web Service
@@ -90,5 +95,68 @@ public class CatalogoWS {
             }
         }
         return list;
+    }
+    
+    @POST
+    @Path ("registro")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje registrarCatalogo (
+    @FormParam ("idcatalogo " ) Integer idcatalogo,
+    @FormParam ("idtipo") Integer idtipo,
+    @FormParam ("nombre") String nombre,
+    @FormParam ("orden") Integer orden){
+        Mensaje resultado;
+        Catalogo c = new Catalogo (idcatalogo, nombre, idtipo, orden);
+        SqlSession conn = MyBatisUtil.getSession();
+        try{
+            conn.insert ("Catalogo . registrarcatalogo ",c);
+            conn.commit();
+            resultado = new Mensaje ("Catálogo registrado exitosamente", false);
+        }catch (Exception ex) {
+        resultado = new Mensaje (ex.getMessage (), true);
+        }finally{
+        conn.close () ;
+        }
+        return resultado;
+    }
+    
+    @PUT
+    @Path ("actualizar")
+    @Produces (MediaType. APPLICATION_JSON)
+    public Mensaje actualizarCatalogo(
+    @FormParam ("idcatalogo") Integer idcatalogo,
+    @FormParam ("nombre") String nombre,
+    @FormParam ("orden") Integer orden){
+        Mensaje resultado;
+        Catalogo c = new Catalogo (idcatalogo, nombre, null, orden);
+            SqlSession conn = MyBatisUtil.getSession();
+        try{
+            conn.update ("Catalogo . actualizarCatalogo ", c);
+            conn.commit();
+        resultado = new Mensaje ("Catálogo actualizado exitosamente" , false);
+        }catch (Exception ex){
+        resultado = new Mensaje (ex.getMessage(),true);
+        }finally{
+            conn.close();
+        }
+        return resultado;
+    }
+    @DELETE
+    @Path ("eliminar")
+    @Produces (MediaType.APPLICATION_JSON)
+    public Mensaje eliminarCatalogo (
+    @FormParam ("idcatalogo ") Integer idcatalogo){
+        Mensaje resultado;
+        SqlSession conn = MyBatisUtil.getSession();
+        try{
+        conn.delete ("Catalogo . eliminarCatalogo " , idcatalogo);
+        conn.commit();
+        resultado = new Mensaje ("Catálogo eliminado exitosamente", false) ;
+        }catch (Exception ex) {
+        resultado = new Mensaje (ex.getMessage () , true) ;
+        }finally{
+        conn.close();
+        }
+        return resultado;
     }
 }
