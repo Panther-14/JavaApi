@@ -17,12 +17,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         catalogo.orden
         FROM catalogo
     </select>
-    <insert id="registrarCatalogo" parameterType="pojos.Catalogo ">
+    <select id="getcatalogosByIdtipo" resultType="pojos.Catalogo"
+            parameterType="int">
+        SELECT
+        catalogo.idCatalogo,
+        catalogo.idTipo,
+        catalogo.nombre,
+        catalogo.orden
+        FROM catalogo
+        WHERE Catalogo.idTipo = #{id}
+    </select>
+    <insert id="registrarCatalogo" parameterType="pojos.Catalogo">
         INSERT INTO catalogo (idcatalogo, idtipo, nombre, orden)
-        VALUES (#(idcatalogo}, #{idtipo), #{nombre}, #{orden})
+        VALUES (#{idcatalogo}, #{idtipo}, #{nombre}, #{orden})
     </insert>
-    <update id="actualizarCatalogo" parameterTYpe="pojos.Catalogo ">
-        UPDATE catalogo SET nombre = #{nombre), orden = #(orden}
+    <update id="actualizarCatalogo" parameterType="pojos.Catalogo">
+        UPDATE catalogo SET nombre = #{nombre}, orden = #{orden}
         WHERE idcatalogo = #{idcatalogo}
     </update>
     <delete id="eliminarCatalogo" parameterType="int">

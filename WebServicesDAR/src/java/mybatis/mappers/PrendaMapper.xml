@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "Prenda">
+    <select id = "getAllPrendas" resultType = "pojos.Prenda">
+        SELECT
+        prenda.idPrenda,
+        prenda.idCategoria,
+        prenda.piezas,
+        prenda.serie,
+        prenda.porcentajePrestamo,
+        prenda.idSubcategoria,
+        prenda.descripcion,
+        prenda.prestamo,
+        prenda.modelo,
+        prenda.avaluo
+        FROM prenda
+    </select>
+    <select id="getPrendaById" resultType="pojos.Prenda"
+            parameterType="int">
+        SELECT
+        prenda.idPrenda,
+        prenda.idCategoria,
+        prenda.piezas,
+        prenda.serie,
+        prenda.porcentajePrestamo,
+        prenda.idSubcategoria,
+        prenda.descripcion,
+        prenda.prestamo,
+        prenda.modelo,
+        prenda.avaluo
+        FROM prenda
+        WHERE prenda.idPrenda = #{idPrenda}
+    </select>
+    <select id="findPrenda" resultType="pojos.Prenda"
+            parameterType="string">
+        SELECT
+        prenda.idPrenda,
+        prenda.idCategoria,
+        prenda.piezas,
+        prenda.serie,
+        prenda.porcentajePrestamo,
+        prenda.idSubcategoria,
+        prenda.descripcion,
+        prenda.prestamo,
+        prenda.modelo,
+        prenda.avaluo
+        FROM prenda
+        WHERE prenda.descripcion LIKE #{descripcion}
+    </select>
+    <insert id="registrarPrenda" parameterType="pojos.Prenda">
+        INSERT INTO prenda (idCategoria, piezas, serie, porcentajePrestamo, idSubcategoria, descripcion, prestamo, modelo, avaluo)
+        VALUES (#{idCategoria}, #{piezas}, #{serie}, 3{porcentajePrestamo}, #{idSubcategoria}, #{descripcion}, #{prestamo}, #{modelo}, #{avaluo})
+    </insert>
+    <update id="actualizarPrenda" parameterType="pojos.Prenda">
+        UPDATE prenda SET idCategoria = #{idCategoria}, piezas = #{piezas}, serie = #{serie},
+        porcentajePrestamo = #{porcentajePrestamo}, idSubcategoria = #{idSubcategoria},
+        descripcion = #{descripcion}, prestamo = #{prestamo}, modelo = #{modelo}, avaluo = #{avaluo}
+        WHERE idcatalogo = #{idcatalogo}
+    </update>
+    <delete id="eliminarPrenda" parameterType="int">
+        DELETE FROM prenda WHERE idPrenda = #{idPrenda}
+    </delete>
+</mapper>
+
