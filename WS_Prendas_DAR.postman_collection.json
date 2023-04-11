@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "33ac3107-a8ed-40bb-9859-716442446298",
+		"name": "WS_Prendas_DAR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getprendabyId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/byId/14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"byId",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscarprendas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/byDesc/ACCESORIO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"byDesc",
+						"ACCESORIO"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrarprenda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idCategoria",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "piezas",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "serie",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "porcentagePrestamo",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "idSubactegoria",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "descripcion",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "prestamo",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "modelo",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "avaluo",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/registro/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"registro",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarprenda",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idCategoria",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "piezas",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "serie",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "porcentagePrestamo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "idSubactegoria",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "descripcion",
+							"value": "aaaaaaaaaa",
+							"type": "text"
+						},
+						{
+							"key": "prestamo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "modelo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "avaluo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "idPrenda",
+							"value": "1720",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/actualizar/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"actualizar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminarprenda",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "idPrenda",
+							"value": "1720",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/WebServicesDAR/webresources/prenda/eliminar/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"WebServicesDAR",
+						"webresources",
+						"prenda",
+						"eliminar",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

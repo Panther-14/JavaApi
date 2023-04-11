@@ -101,7 +101,7 @@ public class CatalogoWS {
     @Path("registro")
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje registrarCatalogo(
-            @FormParam("idcatalogo ") Integer idcatalogo,
+            @FormParam("idcatalogo") Integer idcatalogo,
             @FormParam("idtipo") Integer idtipo,
             @FormParam("nombre") String nombre,
             @FormParam("orden") Integer orden) {

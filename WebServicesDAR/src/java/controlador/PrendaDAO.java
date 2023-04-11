@@ -62,14 +62,13 @@ public class PrendaDAO {
         return list;
     }
 
-    public Mensaje registrarPrenda(
-            Integer idPrenda, Integer idCategoria,
+    public Mensaje registrarPrenda(Integer idCategoria,
             Integer piezas, String serie, Float porcentajePrestamo,
             Integer idSubCategoria, String descripcion, Float prestamo,
             String modelo, Float avaluo
     ) {
         Mensaje resultado;
-        Prenda c = new Prenda(idPrenda, idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
+        Prenda c = new Prenda(idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
         SqlSession conn = MyBatisUtil.getSession();
         try {
             conn.insert("Prenda.registrarPrenda", c);

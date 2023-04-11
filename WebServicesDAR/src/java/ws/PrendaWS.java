@@ -86,20 +86,19 @@ public class PrendaWS {
     @Path("registro")
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje registrarPrenda(
-            @FormParam("idPrenda") Integer idPrenda,
             @FormParam("idCategoria") Integer idCategoria,
             @FormParam("piezas") Integer piezas,
             @FormParam("serie") String serie,
             @FormParam("porcentagePrestamo") Float porcentajePrestamo,
             @FormParam("idSubactegoria") Integer idSubCategoria,
             @FormParam("descripcion") String descripcion,
-            @FormParam("prestammo") Float prestamo,
+            @FormParam("prestamo") Float prestamo,
             @FormParam("modelo") String modelo,
             @FormParam("avaluo") Float avaluo,
             @Context final HttpServletResponse response
     ) {
         PrendaDAO prendaDAO = new PrendaDAO();
-        Mensaje resultado = prendaDAO.registrarPrenda(idPrenda, idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
+        Mensaje resultado = prendaDAO.registrarPrenda(idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
         if(!resultado.isError()){
             response.setStatus(201);
         }else{

@@ -57,13 +57,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     </select>
     <insert id="registrarPrenda" parameterType="pojos.Prenda">
         INSERT INTO prenda (idCategoria, piezas, serie, porcentajePrestamo, idSubcategoria, descripcion, prestamo, modelo, avaluo)
-        VALUES (#{idCategoria}, #{piezas}, #{serie}, 3{porcentajePrestamo}, #{idSubcategoria}, #{descripcion}, #{prestamo}, #{modelo}, #{avaluo})
+        VALUES (#{idCategoria}, #{piezas}, #{serie}, #{porcentagePrestamo}, #{idSubcategoria}, #{descripcion}, #{prestamo}, #{modelo}, #{avaluo})
     </insert>
     <update id="actualizarPrenda" parameterType="pojos.Prenda">
         UPDATE prenda SET idCategoria = #{idCategoria}, piezas = #{piezas}, serie = #{serie},
-        porcentajePrestamo = #{porcentajePrestamo}, idSubcategoria = #{idSubcategoria},
+        porcentajePrestamo = #{porcentagePrestamo}, idSubcategoria = #{idSubcategoria},
         descripcion = #{descripcion}, prestamo = #{prestamo}, modelo = #{modelo}, avaluo = #{avaluo}
-        WHERE idcatalogo = #{idcatalogo}
+        WHERE idPrenda = #{idPrenda}
     </update>
     <delete id="eliminarPrenda" parameterType="int">
         DELETE FROM prenda WHERE idPrenda = #{idPrenda}

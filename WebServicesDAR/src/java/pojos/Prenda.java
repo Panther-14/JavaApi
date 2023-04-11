@@ -36,6 +36,18 @@ public class Prenda {
         this.avaluo = avaluo;
     }
 
+    public Prenda(Integer idCategoria, Integer piezas, String serie, Float porcentagePrestamo, Integer idSubcategoria, String descripcion, Float prestamo, String modelo, Float avaluo) {
+        this.idCategoria = idCategoria;
+        this.piezas = piezas;
+        this.serie = serie;
+        this.porcentagePrestamo = porcentagePrestamo;
+        this.idSubcategoria = idSubcategoria;
+        this.descripcion = descripcion;
+        this.prestamo = prestamo;
+        this.modelo = modelo;
+        this.avaluo = avaluo;
+    }
+
     public Integer getIdPrenda() {
         return idPrenda;
     }
