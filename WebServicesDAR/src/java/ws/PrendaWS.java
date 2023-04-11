@@ -6,6 +6,7 @@ package ws;
 
 import controlador.PrendaDAO;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.DELETE;
@@ -41,9 +42,10 @@ public class PrendaWS {
     @Path("all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Prenda> getAll() {
+    public List<Prenda> getAll(@Context final HttpServletResponse response) {
         PrendaDAO prendaDAO = new PrendaDAO();
         List<Prenda> list = prendaDAO.getAll();
+        response.setStatus(200);
         return list;
     }
 
@@ -51,10 +53,15 @@ public class PrendaWS {
     @Path("byId/{idprenda}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Prenda getPrendaById(@PathParam("idprenda") Integer idPrenda) {
+    public Prenda getPrendaById(@PathParam("idprenda") Integer idPrenda, @Context final HttpServletResponse response) {
         Prenda c;
         PrendaDAO prendaDAO = new PrendaDAO();
         c = prendaDAO.getPrendaById(idPrenda);
+        if(c != null){
+            response.setStatus(200);
+        }else{
+            response.setStatus(400);
+        }
         return c;
     }
 
@@ -62,10 +69,15 @@ public class PrendaWS {
     @Path("byDesc/{prendaDesc}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Prenda> findPrenda(@PathParam("prendaDesc") String descripcion) {
+    public List<Prenda> findPrenda(@PathParam("prendaDesc") String descripcion, @Context final HttpServletResponse response) {
         List<Prenda> c;
         PrendaDAO prendaDAO = new PrendaDAO();
         c = prendaDAO.findPrenda(descripcion);
+        if(c != null){
+            response.setStatus(200);
+        }else{
+            response.setStatus(400);
+        }
         return c;
     }
 
@@ -83,10 +95,16 @@ public class PrendaWS {
             @FormParam("descripcion") String descripcion,
             @FormParam("prestammo") Float prestamo,
             @FormParam("modelo") String modelo,
-            @FormParam("avaluo") Float avaluo
+            @FormParam("avaluo") Float avaluo,
+            @Context final HttpServletResponse response
     ) {
         PrendaDAO prendaDAO = new PrendaDAO();
         Mensaje resultado = prendaDAO.registrarPrenda(idPrenda, idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
+        if(!resultado.isError()){
+            response.setStatus(201);
+        }else{
+            response.setStatus(400);
+        }
         return resultado;
     }
 
@@ -104,9 +122,16 @@ public class PrendaWS {
             @FormParam("descripcion") String descripcion,
             @FormParam("prestammo") Float prestamo,
             @FormParam("modelo") String modelo,
-            @FormParam("avaluo") Float avaluo) {
+            @FormParam("avaluo") Float avaluo,
+            @Context final HttpServletResponse response
+    ) {
         PrendaDAO prendaDAO = new PrendaDAO();
         Mensaje resultado = prendaDAO.actualizarPrenda(idPrenda, idCategoria, piezas, serie, porcentajePrestamo, idSubCategoria, descripcion, prestamo, modelo, avaluo);
+        if(!resultado.isError()){
+            response.setStatus(202);
+        }else{
+            response.setStatus(400);
+        }
         return resultado;
     }
 
@@ -115,9 +140,16 @@ public class PrendaWS {
     @Path("eliminar")
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje eliminarPrenda(
-            @FormParam("idPrenda") Integer idPrenda) {
+            @FormParam("idPrenda") Integer idPrenda,
+            @Context final HttpServletResponse response
+    ) {
         PrendaDAO prendaDAO = new PrendaDAO();
         Mensaje resultado = prendaDAO.eliminarPrenda(idPrenda);
+        if(!resultado.isError()){
+            response.setStatus(202);
+        }else{
+            response.setStatus(400);
+        }
         return resultado;
     }
 }
