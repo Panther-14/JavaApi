@@ -36,4 +36,4 @@ nbdist/
 resources/*.txt
 
 # To Upload JAR libraries
-!/libs/*.jar
+!libs/*.jar
